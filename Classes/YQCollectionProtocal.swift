@@ -8,6 +8,10 @@
 
 import Foundation
 
-protocol YQCollectionProtocal {
+@objc protocol YQCollectionProtocal {
+
+    optional var beginningDate:NSDate? {get set}
+    
     var numberOfSections:Int {get}
+    func numberOfItemsInSection(section:Int) -> Int
 }

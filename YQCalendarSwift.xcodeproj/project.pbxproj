@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21B1352B1BD730A8003B94C7 /* YQCalendarConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B1352A1BD730A8003B94C7 /* YQCalendarConfigure.swift */; settings = {ASSET_TAGS = (); }; };
 		55450F131BC948F7005880ED /* YQMonthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55450F121BC948F7005880ED /* YQMonthViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		55450F151BC9491D005880ED /* YQWeekViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55450F141BC9491D005880ED /* YQWeekViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		55450F171BC949EF005880ED /* YQCollectionProtocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55450F161BC949EF005880ED /* YQCollectionProtocal.swift */; settings = {ASSET_TAGS = (); }; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		21B1352A1BD730A8003B94C7 /* YQCalendarConfigure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQCalendarConfigure.swift; sourceTree = "<group>"; };
 		2735D7CDE15CE6F09D7FC30F /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35D33C8E64691E111FA57670 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		55450F121BC948F7005880ED /* YQMonthViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQMonthViewModel.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				55450F121BC948F7005880ED /* YQMonthViewModel.swift */,
 				55450F141BC9491D005880ED /* YQWeekViewModel.swift */,
 				55450F161BC949EF005880ED /* YQCollectionProtocal.swift */,
+				21B1352A1BD730A8003B94C7 /* YQCalendarConfigure.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 			files = (
 				55CFFAB11BB43F940086963C /* ViewController.swift in Sources */,
 				55CFFAE11BB44C6E0086963C /* YQDateModel.swift in Sources */,
+				21B1352B1BD730A8003B94C7 /* YQCalendarConfigure.swift in Sources */,
 				55CFFAAF1BB43F940086963C /* AppDelegate.swift in Sources */,
 				55450F131BC948F7005880ED /* YQMonthViewModel.swift in Sources */,
 				55450F151BC9491D005880ED /* YQWeekViewModel.swift in Sources */,

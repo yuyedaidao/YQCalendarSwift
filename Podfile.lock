@@ -1,10 +1,10 @@
 PODS:
-  - Timepiece (0.4.1)
+  - Timepiece (0.4.2)
 
 DEPENDENCIES:
   - Timepiece
 
 SPEC CHECKSUMS:
-  Timepiece: f79d2af3bc185d286cc22a4f525f805fed0bcc4d
+  Timepiece: cf53bb908bf542acc0e3d5f69cabfed869df4ebd
 
 COCOAPODS: 0.39.0
