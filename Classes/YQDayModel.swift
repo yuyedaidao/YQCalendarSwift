@@ -10,7 +10,7 @@ import UIKit
 
 class YQDayModel: NSObject {
     
-    init(indexPath: NSIndexPath, mode: YQCalendarMode) {
+    init(indexPath: NSIndexPath, mode: YQCalendarMode, firstDay: YQCalendarFirstDay) {
         
     }
 }

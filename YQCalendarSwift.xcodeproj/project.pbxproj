@@ -10,6 +10,9 @@
 		212255DB1D1810BB00BCE386 /* YQDayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212255DA1D1810BB00BCE386 /* YQDayModel.swift */; };
 		212255DC1D1810BB00BCE386 /* YQDayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212255DA1D1810BB00BCE386 /* YQDayModel.swift */; };
 		212255DD1D1810BB00BCE386 /* YQDayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212255DA1D1810BB00BCE386 /* YQDayModel.swift */; };
+		216B25C71D1935A900F57FBE /* YQCalendarDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216B25C61D1935A900F57FBE /* YQCalendarDayCell.swift */; };
+		216B25C81D1935A900F57FBE /* YQCalendarDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216B25C61D1935A900F57FBE /* YQCalendarDayCell.swift */; };
+		216B25C91D1935A900F57FBE /* YQCalendarDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216B25C61D1935A900F57FBE /* YQCalendarDayCell.swift */; };
 		21B1352B1BD730A8003B94C7 /* YQCalendarConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B1352A1BD730A8003B94C7 /* YQCalendarConfigure.swift */; };
 		55450F131BC948F7005880ED /* YQMonthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55450F121BC948F7005880ED /* YQMonthViewModel.swift */; };
 		55450F151BC9491D005880ED /* YQWeekViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55450F141BC9491D005880ED /* YQWeekViewModel.swift */; };
@@ -47,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		212255DA1D1810BB00BCE386 /* YQDayModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQDayModel.swift; sourceTree = "<group>"; };
+		216B25C61D1935A900F57FBE /* YQCalendarDayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQCalendarDayCell.swift; sourceTree = "<group>"; };
 		21B1352A1BD730A8003B94C7 /* YQCalendarConfigure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQCalendarConfigure.swift; sourceTree = "<group>"; };
 		2735D7CDE15CE6F09D7FC30F /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35D33C8E64691E111FA57670 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -169,6 +173,7 @@
 				55450F161BC949EF005880ED /* YQCollectionProtocal.swift */,
 				21B1352A1BD730A8003B94C7 /* YQCalendarConfigure.swift */,
 				212255DA1D1810BB00BCE386 /* YQDayModel.swift */,
+				216B25C61D1935A900F57FBE /* YQCalendarDayCell.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -371,6 +376,7 @@
 				55450F151BC9491D005880ED /* YQWeekViewModel.swift in Sources */,
 				55450F171BC949EF005880ED /* YQCollectionProtocal.swift in Sources */,
 				212255DB1D1810BB00BCE386 /* YQDayModel.swift in Sources */,
+				216B25C71D1935A900F57FBE /* YQCalendarDayCell.swift in Sources */,
 				55CFFADE1BB448820086963C /* YQCalendar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -382,6 +388,7 @@
 				212255DC1D1810BB00BCE386 /* YQDayModel.swift in Sources */,
 				55CFFAE21BB44C6E0086963C /* YQDateModel.swift in Sources */,
 				55CFFAC41BB43F940086963C /* YQCalendarSwiftTests.swift in Sources */,
+				216B25C81D1935A900F57FBE /* YQCalendarDayCell.swift in Sources */,
 				55CFFADF1BB448820086963C /* YQCalendar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -391,6 +398,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				212255DD1D1810BB00BCE386 /* YQDayModel.swift in Sources */,
+				216B25C91D1935A900F57FBE /* YQCalendarDayCell.swift in Sources */,
 				55CFFACF1BB43F940086963C /* YQCalendarSwiftUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

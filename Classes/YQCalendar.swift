@@ -8,6 +8,8 @@
 
 import UIKit
 
+let kCellIdentifier = "YQCalendarItem"
+
 enum YQCalendarMode{
     case Week
     case Month
@@ -44,7 +46,9 @@ class YQCalendar: UIView,UICollectionViewDelegate,UICollectionViewDataSource {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        /*待定*/
+        let width = self.frame.size.width/CGFloat(kCalendarColumn)
+        let height = self.frame.size.height/CGFloat(kCalendarRow)
+        (self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout).itemSize = CGSizeMake(width,height)
     }
     
     /*handler*/
@@ -58,7 +62,7 @@ class YQCalendar: UIView,UICollectionViewDelegate,UICollectionViewDataSource {
         self.addConstraint(NSLayoutConstraint(item: self.collectionView, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1, constant: 0))
         self.addConstraint(NSLayoutConstraint(item: self.collectionView, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1, constant: 0))
         
-        self.collectionView.registerClass(UICollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "YQCalendarItem")
+        self.collectionView.registerClass(YQCollectionDayCell.classForCoder(), forCellWithReuseIdentifier: kCellIdentifier)
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         
@@ -75,9 +79,8 @@ class YQCalendar: UIView,UICollectionViewDelegate,UICollectionViewDataSource {
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        print(indexPath)
-        let cell = collectionView .dequeueReusableCellWithReuseIdentifier("YQCalendarItem", forIndexPath: indexPath)
-        cell.backgroundColor = UIColor(red: CGFloat(random()%255)/255.0, green: CGFloat(random()%255)/255.0, blue: CGFloat(random()%255)/255.0, alpha: 1)
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCellIdentifier, forIndexPath: indexPath) as YQCollectionDayCell
+        
         return cell
     }
     
