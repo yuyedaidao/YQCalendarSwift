@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Timepiece
+import SwiftDateTools
 
 let kCalendarRow = 6
 let kCalendarColumn = 7
@@ -25,8 +25,24 @@ class YQCalendarConfigure: NSObject {
     static let calendar = NSCalendar.currentCalendar()
     
     var firstDay:YQCalendarFirstDay = YQCalendarFirstDay.Monday
-    var minDate:NSDate = NSDate(timeIntervalSince1970: 0)
-    var maxDate:NSDate = "2099-12-31".dateFromFormat("yyyy-MM-dd")!
+    //注意最小日期需要是某个月份的第一天
+    var minDate:NSDate = NSDate.dateWithYear(1970, month: 1, day: 1, hour: 0, minute: 0, second: 0)
+    var maxDate:NSDate = NSDate.dateWithYear(2099, month: 12, day: 31, hour: 0, minute: 0, second: 0)
+    
+    lazy var beginningDate: NSDate = {
+        let week  = self.minDate.weekday
+        switch self.firstDay{
+        case .Monday:
+            if(week == 1){//星期天的情况
+                return self.minDate.dateByAddingTimeInterval(-6*WholeDay)
+            }else{//非星期天的情况
+                return self.minDate.dateByAddingTimeInterval(NSTimeInterval(-week+2)*WholeDay)
+            }
+            
+        case .Sunday:
+            return self.minDate.dateByAddingTimeInterval(NSTimeInterval(-week+1)*WholeDay)
+        }
+    }()
     
     private override init() {}
 }

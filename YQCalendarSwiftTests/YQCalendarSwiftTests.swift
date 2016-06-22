@@ -25,7 +25,11 @@ class YQCalendarSwiftTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         //var yqcalendar = YQCalendar(frame: CGRectZero)
-        
+        let date = NSDate.dateWithYear(2016, month: 6, day: 22, hour: 0, minute: 0, second: 0)
+        for index in 0...13 {
+            let d = date.dateByAddingDays(index)
+            print("weekDay is \(d.weekday)")
+        }
     
     }
     

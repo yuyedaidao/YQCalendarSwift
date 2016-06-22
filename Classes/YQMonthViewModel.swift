@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Timepiece
 
 class YQMonthViewModel:NSObject,YQCollectionProtocal {
     //var beginningDate:NSDate?//并不会使用，只是为了符合protocal规范  //已用 @objc解决
@@ -18,6 +19,6 @@ class YQMonthViewModel:NSObject,YQCollectionProtocal {
     }
     
     func numberOfItemsInSection(section: Int) -> Int {
-        return 7*6;
+        return kCalendarColumn * kCalendarRow;
     }
 }

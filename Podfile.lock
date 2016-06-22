@@ -1,10 +1,13 @@
 PODS:
+  - SwiftDateTools (1.0)
   - Timepiece (0.4.2)
 
 DEPENDENCIES:
+  - SwiftDateTools
   - Timepiece
 
 SPEC CHECKSUMS:
+  SwiftDateTools: e83af27a2075a60e0a8b8044e20e7d1054173056
   Timepiece: cf53bb908bf542acc0e3d5f69cabfed869df4ebd
 
 COCOAPODS: 0.39.0

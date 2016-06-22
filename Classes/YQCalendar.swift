@@ -17,8 +17,9 @@ enum YQCalendarMode{
 
 class YQCalendar: UIView,UICollectionViewDelegate,UICollectionViewDataSource {
 
-    let collectionView:UICollectionView!
+    var collectionView:UICollectionView!
     var collectionModel:YQCollectionProtocal = YQMonthViewModel()
+    var collectionLayout: UICollectionViewFlowLayout!
     var mode:YQCalendarMode = .Month {
         didSet{
             switch(mode){
@@ -31,15 +32,10 @@ class YQCalendar: UIView,UICollectionViewDelegate,UICollectionViewDataSource {
     }
     
     override init(frame: CGRect) {
-        self.collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: UICollectionViewFlowLayout())
         super.init(frame: frame)
         self.prepareCollectionView()
     }
     required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSizeMake(20, 20)
-        self.collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: layout)
         super.init(coder: aDecoder)
         self.prepareCollectionView()
     }
@@ -53,19 +49,23 @@ class YQCalendar: UIView,UICollectionViewDelegate,UICollectionViewDataSource {
     
     /*handler*/
     func prepareCollectionView() {
+        self.collectionLayout = UICollectionViewFlowLayout()
+        self.collectionLayout.minimumLineSpacing = 0
+        self.collectionLayout.minimumInteritemSpacing = 0
+        self.collectionLayout.scrollDirection = UICollectionViewScrollDirection.Horizontal
+        self.collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: self.collectionLayout)
+        self.collectionView.pagingEnabled = true
         
         self.addSubview(self.collectionView)
-        
         self.collectionView.translatesAutoresizingMaskIntoConstraints = false
         self.addConstraint(NSLayoutConstraint(item: self.collectionView, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: .Leading, multiplier: 1, constant: 0))
         self.addConstraint(NSLayoutConstraint(item: self.collectionView, attribute: NSLayoutAttribute.Trailing, relatedBy: .Equal, toItem: self, attribute: .Trailing, multiplier: 1, constant: 0))
         self.addConstraint(NSLayoutConstraint(item: self.collectionView, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1, constant: 0))
         self.addConstraint(NSLayoutConstraint(item: self.collectionView, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1, constant: 0))
         
-        self.collectionView.registerClass(YQCollectionDayCell.classForCoder(), forCellWithReuseIdentifier: kCellIdentifier)
+        self.collectionView.registerClass(YQCalendarDayCell.classForCoder(), forCellWithReuseIdentifier: kCellIdentifier)
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-        
         self.collectionView.reloadData()
     }
     
@@ -79,8 +79,9 @@ class YQCalendar: UIView,UICollectionViewDelegate,UICollectionViewDataSource {
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCellIdentifier, forIndexPath: indexPath) as YQCollectionDayCell
-        
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCellIdentifier, forIndexPath: indexPath) as! YQCalendarDayCell
+        cell.model = YQDayModel(indexPath: indexPath, mode: self.mode, firstDay: YQCalendarConfigure.sharedInstance.firstDay)
+//        cell.backgroundColor = UIColor(colorLiteralRed: Float(random()%255)/255.0, green: Float(random()%255)/255.0, blue: Float(random()%255)/255.0, alpha: 1)
         return cell
     }
     
