@@ -10,9 +10,9 @@ import UIKit
 import SwiftDateTools
 
 class YQWeekViewModel:NSObject,YQCollectionProtocal {
-    lazy var cacheNumberOfItems:Int = {
+    lazy var numberOfItems:Int = {
         let configure = YQCalendarConfigure.sharedInstance
-        return Int((configure.maxDate.timeIntervalSince1970-configure.beginningDate.timeIntervalSince1970)/NSTimeInterval(WholeDay*7))
+        return Int((configure.maxDate.timeIntervalSince1970-configure.beginningDate.timeIntervalSince1970)/NSTimeInterval(WholeDay))
     }()
     
     // yqcollection protocal
@@ -20,6 +20,6 @@ class YQWeekViewModel:NSObject,YQCollectionProtocal {
         return 1
     }
     func numberOfItemsInSection(section: Int) -> Int {
-        return self.cacheNumberOfItems
+        return self.numberOfItems
     }
 }

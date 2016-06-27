@@ -33,6 +33,14 @@ class YQCalendarSwiftTests: XCTestCase {
     
     }
     
+    func testWeeksFrom() {
+        let date = NSDate.dateWithYear(2016, month: 6, day: 22, hour: 0, minute: 0, second: 0)
+        for index in 0...13 {
+            let d = date.dateByAddingDays(index)
+            let duration = NSCalendar.currentCalendar().weeksFrom(d, toDate: date)
+            print(duration)
+        }
+    }
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measureBlock {

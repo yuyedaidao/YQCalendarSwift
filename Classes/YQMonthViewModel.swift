@@ -10,7 +10,7 @@ import UIKit
 import Timepiece
 
 class YQMonthViewModel:NSObject,YQCollectionProtocal {
-    //var beginningDate:NSDate?//并不会使用，只是为了符合protocal规范  //已用 @objc解决
+    //var beginningDate:NSDate?//并不会使用，只是为了符合protocal规范  //已用 @objc解决 //撤销此策略
     
     var numberOfSections:Int {
         let configure = YQCalendarConfigure.sharedInstance;

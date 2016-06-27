@@ -18,22 +18,11 @@ enum YQDateType {
 
 class YQDayModel: NSObject {
     var dateType: YQDateType = .CurrentMoth
+    var mode: YQCalendarMode
     var month: NSDate
-    var date: NSDate {
-        didSet {
-            print("hello, everybody")
-            if date < month {
-                self.dateType = .PreMonth
-            } else if date > month.endOfMonth {
-                self.dateType = .NextMonth
-            } else if date == NSDate.today() {
-                self.dateType = .Today
-            }
-            print(self.dateType)
-        }
-    }
+    var date: NSDate
     init(indexPath: NSIndexPath, mode: YQCalendarMode, firstDay: YQCalendarFirstDay) {
-        
+        self.mode = mode
         //先获取月份第一天再根据月份的第一天是星期几判断当前日期
         self.month = YQCalendarConfigure.sharedInstance.minDate.dateByAddingMonths(indexPath.section)//这就是月份的第一天的日期，因为最小日期是某个月份的第一天
         if mode == .Month {
@@ -54,5 +43,22 @@ class YQDayModel: NSObject {
             self.date = YQCalendarConfigure.sharedInstance.beginningDate.dateByAddingDays(indexPath.item)
         }
         super.init()
+        self.didChangeDateValue()
+    }
+    
+    func didChangeDateValue() {//因为在初始化中是无法调用didSet的，所以需要单独实现
+        if self.mode == .Month {
+            if date < month {
+                self.dateType = .PreMonth
+            } else if date > month.endOfMonth {
+                self.dateType = .NextMonth
+            } else if date == NSDate.today() {
+                self.dateType = .Today
+            }
+        } else {
+            if date == NSDate.today() {
+                self.dateType = .Today
+            }
+        }
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftDateTools
 
 let kCellIdentifier = "YQCalendarItem"
 
@@ -28,6 +29,8 @@ class YQCalendar: UIView,UICollectionViewDelegate,UICollectionViewDataSource {
                 case .Week:
                     self.collectionModel = YQWeekViewModel()
             }
+            self.adjustItemSize()
+            self.collectionView.reloadData()
         }
     }
     
@@ -42,12 +45,20 @@ class YQCalendar: UIView,UICollectionViewDelegate,UICollectionViewDataSource {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        let width = self.frame.size.width/CGFloat(kCalendarColumn)
-        let height = self.frame.size.height/CGFloat(kCalendarRow)
-        (self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout).itemSize = CGSizeMake(width,height)
+        self.adjustItemSize()
     }
     
     /*handler*/
+    func adjustItemSize() {
+        let width = self.frame.size.width/CGFloat(kCalendarColumn)
+        if self.mode == .Week {
+            (self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout).itemSize = CGSizeMake(width,self.collectionView.bounds.size.height)
+            return
+        }
+        let height = self.frame.size.height/CGFloat(kCalendarRow)
+        (self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout).itemSize = CGSizeMake(width,height)
+
+    }
     func prepareCollectionView() {
         self.collectionLayout = UICollectionViewFlowLayout()
         self.collectionLayout.minimumLineSpacing = 0
@@ -81,9 +92,17 @@ class YQCalendar: UIView,UICollectionViewDelegate,UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCellIdentifier, forIndexPath: indexPath) as! YQCalendarDayCell
         cell.model = YQDayModel(indexPath: indexPath, mode: self.mode, firstDay: YQCalendarConfigure.sharedInstance.firstDay)
-//        cell.backgroundColor = UIColor(colorLiteralRed: Float(random()%255)/255.0, green: Float(random()%255)/255.0, blue: Float(random()%255)/255.0, alpha: 1)
         return cell
     }
     
-
+    //Mark: public method
+    func scrollTo(date: NSDate, animated: Bool) {
+        var sections = 0
+        if self.mode == .Month {
+           sections = NSCalendar.currentCalendar().monthsFrom(date, toDate: YQCalendarConfigure.sharedInstance.minDate)
+        } else {
+           sections = NSCalendar.currentCalendar().weeksFrom(date, toDate: YQCalendarConfigure.sharedInstance.beginningDate)
+        }
+        self.collectionView.setContentOffset(CGPointMake(CGRectGetWidth(self.collectionView.bounds) * CGFloat(sections), 0), animated: animated)
+    }
 }

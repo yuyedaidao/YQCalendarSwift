@@ -14,12 +14,13 @@ class YQCalendarDayCell: UICollectionViewCell {
             if oldValue != model {
                 switch model.dateType {
                 case .PreMonth,.NextMonth:
-                    self.label.textColor = UIColor.blueColor()
+                    self.label.textColor = UIColor.lightTextColor()
                 case .CurrentMoth:
                     self.label.textColor = UIColor.whiteColor()
                 case .Today:
                     self.label.textColor = UIColor.redColor()
                 }
+                print(self.model.date)
                 self.label.text = "\(model.date.day)"
             }
         }
