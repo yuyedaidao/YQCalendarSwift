@@ -29,6 +29,4 @@ class ViewModel: NSObject {
         self.weekCalendar = weekCalendar
     }
     
-    
-    
 }
